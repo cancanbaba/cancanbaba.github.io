@@ -1,0 +1,308 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    JavaSE：集合 | cancanbaba&#39;s blog
+</title>
+<link rel="shortcut icon" href="https://https://cancanbaba.github.io/favicon.ico?v=1605676123025">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://https://cancanbaba.github.io/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://https://cancanbaba.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://https://cancanbaba.github.io">
+                <img class="avatar" src="https://https://cancanbaba.github.io/images/avatar.png?v=1605676123025" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    cancanbaba&#39;s blog
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            JavaSE：集合
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-11-18</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>001.概述<br>
+集合是Java的一种容器，它位于java.util包下，主要包括：Collection(接口)、Map(接口)、集合工具类。<br>
+002.集合结构图</p>
+<p>003.List接口<br>
+0031.特点</p>
+<p>有序的、允许有重复元素的集合</p>
+<p>0032.主要的两个实现类：</p>
+<p>ArrayList：底层基于数组，内存地址是连续的<br>
+LinkedList：底层基于双向链表，内存地址不连续</p>
+<p>0033.ArrayList</p>
+<p>元素可以为一个或多个null；<br>
+默认初始容量为10，当数组大小不足时，容量扩大1.5倍；</p>
+<p>List<String> list = new ArrayList&lt;&gt;();<br>
+list.add(&quot;hua&quot;);<br>
+list.add(&quot;ming&quot;);<br>
+list.add(&quot;fan&quot;);<br>
+list.add(null);<br>
+list.add(&quot;hua&quot;);<br>
+list.add(null);<br>
+System.out.println(list);</p>
+<p>//输出<br>
+[hua, ming, fan, null, hua, null]<br>
+复制代码0034.LinkedList</p>
+<p>元素可以为一个或多个null<br>
+同时实现List和Deque接口</p>
+<p>0035.ArrayList和LinkedList常用的几种方法：<br>
+void add(E element)             添加元素<br>
+void add(int i,E element)       指定位置添加元素<br>
+E get(int i)                    获取元素<br>
+E set(int i,E element)          替换元素<br>
+E remove(int i)                 移除元素<br>
+int size()                      元素数量<br>
+boolean isEmpty()               集合中没有元素，返回true<br>
+复制代码0036.遍历的三种方式<br>
+//举以下例子<br>
+public static void main(String[] args) {<br>
+List<Integer> list = new ArrayList&lt;&gt;();<br>
+for(int i=0;i&lt;10;i++){<br>
+list.add(i);<br>
+}<br>
+System.out.println(list);</p>
+<pre><code>//迭代器遍历
+Iterator&lt;Integer&gt; it = list.iterator();
+while(it.hasNext()){
+	System.out.print(it.next() +&quot; &quot;);
+}
+
+System.out.println();
+//遍历：增强型for循环
+for(Integer n:list){
+	System.out.print(n+&quot; &quot;);
+}
+
+System.out.println();
+//遍历：for
+for(int i=0;i&lt;list.size();i++){
+	System.out.print(list.get(i)+&quot; &quot;);
+}	
+</code></pre>
+<p>}<br>
+复制代码0037.应用场景</p>
+<p>ArrayList更适合查询操作；<br>
+LinkedList更适合插入和删除操作；</p>
+<p>004.Set接口<br>
+0041.特点</p>
+<p>无序的、不允许有重复元素的集合</p>
+<p>0042.实现类</p>
+<p>HashSet：底层基于HashMap实现<br>
+TreeSet：底层基于二叉树实现</p>
+<p>0043.HashSet</p>
+<p>只允许一个null元素</p>
+<p>Set<String> sh = new HashSet&lt;&gt;();<br>
+sh.add(&quot;fan&quot;);<br>
+sh.add(null);<br>
+sh.add(&quot;hua&quot;);<br>
+sh.add(&quot;ming&quot;);<br>
+sh.add(&quot;hua&quot;);//被过滤掉<br>
+sh.add(null); //被过滤掉<br>
+System.out.println(sh);//[null, fan, hua, ming]<br>
+复制代码005.Map接口<br>
+0051.特点</p>
+<p>具有映射关系的集合<br>
+数据以键值对(key-value)存储</p>
+<p>0052.主要的两个实现类</p>
+<p>HashMap：底层基于数组+链表(JDK7及之前)，数组+链表+红黑树(JDK8)<br>
+HashTable：底层基于哈希表</p>
+<p>0053.HashMap</p>
+<p>键唯一，值可以不唯一<br>
+允许有null键和null值<br>
+Entry对象是无序排列的<br>
+默认初始容量16，默认加载因子0.75</p>
+<p>0054.HashMap常用方法<br>
+V put(Object key,Object value)  添加<br>
+V get(Object key)               查询<br>
+V remove(Object key)            移除<br>
+int size()                           长度<br>
+复制代码0055.代码<br>
+Map&lt;Integer,String&gt; map = new HashMap&lt;&gt;();<br>
+map.put(1, &quot;wang&quot;);<br>
+map.put(2, &quot;li&quot;);<br>
+map.put(3, &quot;hua&quot;);<br>
+map.put(4, null);<br>
+map.put(5, null);<br>
+map.put(2, &quot;fan&quot;); //直接覆盖前面相同的key的value<br>
+map.put(null, null);//key value 可以为空<br>
+System.out.println(map);//{null=null, 1=wang, 2=fan, 3=hua, 4=null, 5=null}<br>
+复制代码0056.遍历的方式<br>
+//方式一：遍历<br>
+for(Integer i:map.keySet()){<br>
+System.out.println(&quot;key:&quot;+i+&quot; values:&quot;+map.get(i));<br>
+}</p>
+<p>//方式二：遍历<br>
+Iterator&lt;Entry&lt;Integer,String&gt;&gt; list = map.entrySet().iterator();<br>
+while(list.hasNext()){<br>
+Entry&lt;Integer,String&gt;entry = list.next();<br>
+System.out.println(&quot;key:&quot;+entry.getKey()+&quot; values:&quot;+entry.getValue());<br>
+}<br>
+复制代码006.工具类</p>
+<p>Collections、Arrays：集合的工具类帮助类，提供了对集合元素排序、搜索及线程安全等操作；<br>
+Comparable、Comparator：一般用于对象比较来实现排序，两种略有区别；</p>
+<p>作者：火奂。著作权归作者所有。</p>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://https://cancanbaba.github.io/post/mian-xiang-jie-kou-bian-cheng-you-dian/">
+                                <h3 class="post-title">
+                                    面向接口编程优点
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://https://cancanbaba.github.io/images/avatar.png?v=1605676123025)">
+        </div>
+        <h1 class="id_card-title">
+            cancanbaba&#39;s blog
+        </h1>
+        <h2 class="id_card-description">
+            Better late than never 
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+                                    
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://https://cancanbaba.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>

@@ -1,54 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://https://cancanbaba.github.io</id>
-    <title>cancanbaba个人网站</title>
-    <updated>2020-11-18T04:51:44.288Z</updated>
+    <title>cancanbaba&apos;s blog</title>
+    <updated>2020-11-18T05:08:45.618Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://https://cancanbaba.github.io"/>
     <link rel="self" href="https://https://cancanbaba.github.io/atom.xml"/>
-    <subtitle>cancanbaba’s blog</subtitle>
+    <subtitle>Better late than never </subtitle>
     <logo>https://https://cancanbaba.github.io/images/avatar.png</logo>
     <icon>https://https://cancanbaba.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, cancanbaba个人网站</rights>
+    <rights>All rights reserved 2020, cancanbaba&apos;s blog</rights>
     <entry>
-        <title type="html"><![CDATA[123]]></title>
-        <id>https://https://cancanbaba.github.io/post/123/</id>
-        <link href="https://https://cancanbaba.github.io/post/123/">
+        <title type="html"><![CDATA[JavaSE：集合]]></title>
+        <id>https://https://cancanbaba.github.io/post/javaseji-he/</id>
+        <link href="https://https://cancanbaba.github.io/post/javaseji-he/">
         </link>
-        <updated>2020-11-18T03:50:23.000Z</updated>
-        <content type="html"><![CDATA[<p>的胜多负少的鬼地方个地方梵蒂冈电饭锅的方式</p>
+        <updated>2020-11-18T05:06:25.000Z</updated>
+        <content type="html"><![CDATA[<p>001.概述<br>
+集合是Java的一种容器，它位于java.util包下，主要包括：Collection(接口)、Map(接口)、集合工具类。<br>
+002.集合结构图</p>
+<p>003.List接口<br>
+0031.特点</p>
+<p>有序的、允许有重复元素的集合</p>
+<p>0032.主要的两个实现类：</p>
+<p>ArrayList：底层基于数组，内存地址是连续的<br>
+LinkedList：底层基于双向链表，内存地址不连续</p>
+<p>0033.ArrayList</p>
+<p>元素可以为一个或多个null；<br>
+默认初始容量为10，当数组大小不足时，容量扩大1.5倍；</p>
+<p>List<String> list = new ArrayList&lt;&gt;();<br>
+list.add(&quot;hua&quot;);<br>
+list.add(&quot;ming&quot;);<br>
+list.add(&quot;fan&quot;);<br>
+list.add(null);<br>
+list.add(&quot;hua&quot;);<br>
+list.add(null);<br>
+System.out.println(list);</p>
+<p>//输出<br>
+[hua, ming, fan, null, hua, null]<br>
+复制代码0034.LinkedList</p>
+<p>元素可以为一个或多个null<br>
+同时实现List和Deque接口</p>
+<p>0035.ArrayList和LinkedList常用的几种方法：<br>
+void add(E element)             添加元素<br>
+void add(int i,E element)       指定位置添加元素<br>
+E get(int i)                    获取元素<br>
+E set(int i,E element)          替换元素<br>
+E remove(int i)                 移除元素<br>
+int size()                      元素数量<br>
+boolean isEmpty()               集合中没有元素，返回true<br>
+复制代码0036.遍历的三种方式<br>
+//举以下例子<br>
+public static void main(String[] args) {<br>
+List<Integer> list = new ArrayList&lt;&gt;();<br>
+for(int i=0;i&lt;10;i++){<br>
+list.add(i);<br>
+}<br>
+System.out.println(list);</p>
+<pre><code>//迭代器遍历
+Iterator&lt;Integer&gt; it = list.iterator();
+while(it.hasNext()){
+	System.out.print(it.next() +&quot; &quot;);
+}
+
+System.out.println();
+//遍历：增强型for循环
+for(Integer n:list){
+	System.out.print(n+&quot; &quot;);
+}
+
+System.out.println();
+//遍历：for
+for(int i=0;i&lt;list.size();i++){
+	System.out.print(list.get(i)+&quot; &quot;);
+}	
+</code></pre>
+<p>}<br>
+复制代码0037.应用场景</p>
+<p>ArrayList更适合查询操作；<br>
+LinkedList更适合插入和删除操作；</p>
+<p>004.Set接口<br>
+0041.特点</p>
+<p>无序的、不允许有重复元素的集合</p>
+<p>0042.实现类</p>
+<p>HashSet：底层基于HashMap实现<br>
+TreeSet：底层基于二叉树实现</p>
+<p>0043.HashSet</p>
+<p>只允许一个null元素</p>
+<p>Set<String> sh = new HashSet&lt;&gt;();<br>
+sh.add(&quot;fan&quot;);<br>
+sh.add(null);<br>
+sh.add(&quot;hua&quot;);<br>
+sh.add(&quot;ming&quot;);<br>
+sh.add(&quot;hua&quot;);//被过滤掉<br>
+sh.add(null); //被过滤掉<br>
+System.out.println(sh);//[null, fan, hua, ming]<br>
+复制代码005.Map接口<br>
+0051.特点</p>
+<p>具有映射关系的集合<br>
+数据以键值对(key-value)存储</p>
+<p>0052.主要的两个实现类</p>
+<p>HashMap：底层基于数组+链表(JDK7及之前)，数组+链表+红黑树(JDK8)<br>
+HashTable：底层基于哈希表</p>
+<p>0053.HashMap</p>
+<p>键唯一，值可以不唯一<br>
+允许有null键和null值<br>
+Entry对象是无序排列的<br>
+默认初始容量16，默认加载因子0.75</p>
+<p>0054.HashMap常用方法<br>
+V put(Object key,Object value)  添加<br>
+V get(Object key)               查询<br>
+V remove(Object key)            移除<br>
+int size()                           长度<br>
+复制代码0055.代码<br>
+Map&lt;Integer,String&gt; map = new HashMap&lt;&gt;();<br>
+map.put(1, &quot;wang&quot;);<br>
+map.put(2, &quot;li&quot;);<br>
+map.put(3, &quot;hua&quot;);<br>
+map.put(4, null);<br>
+map.put(5, null);<br>
+map.put(2, &quot;fan&quot;); //直接覆盖前面相同的key的value<br>
+map.put(null, null);//key value 可以为空<br>
+System.out.println(map);//{null=null, 1=wang, 2=fan, 3=hua, 4=null, 5=null}<br>
+复制代码0056.遍历的方式<br>
+//方式一：遍历<br>
+for(Integer i:map.keySet()){<br>
+System.out.println(&quot;key:&quot;+i+&quot; values:&quot;+map.get(i));<br>
+}</p>
+<p>//方式二：遍历<br>
+Iterator&lt;Entry&lt;Integer,String&gt;&gt; list = map.entrySet().iterator();<br>
+while(list.hasNext()){<br>
+Entry&lt;Integer,String&gt;entry = list.next();<br>
+System.out.println(&quot;key:&quot;+entry.getKey()+&quot; values:&quot;+entry.getValue());<br>
+}<br>
+复制代码006.工具类</p>
+<p>Collections、Arrays：集合的工具类帮助类，提供了对集合元素排序、搜索及线程安全等操作；<br>
+Comparable、Comparator：一般用于对象比较来实现排序，两种略有区别；</p>
+<p>作者：火奂。著作权归作者所有。</p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://https://cancanbaba.github.io/post/hello-gridea/</id>
-        <link href="https://https://cancanbaba.github.io/post/hello-gridea/">
+        <title type="html"><![CDATA[面向接口编程优点]]></title>
+        <id>https://https://cancanbaba.github.io/post/mian-xiang-jie-kou-bian-cheng-you-dian/</id>
+        <link href="https://https://cancanbaba.github.io/post/mian-xiang-jie-kou-bian-cheng-you-dian/">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+        <updated>2020-11-18T05:02:50.000Z</updated>
+        <content type="html"><![CDATA[<p>1 首先什么是面向接口编程：</p>
+<p>面向接口编程就是先把客户的业务逻辑线提取出来，</p>
+<p>作为接口，业务具体实现通过该接口的实现类来完成。 当客户需求变化时，</p>
+<p>只需编写该业务逻辑的新的实现类，通过更改配置文件(例如Spring框架)中该接口 的实现类就可以完成需求，</p>
+<p>不需要改写现有代码，减少对系统的影响。</p>
+<p>2 面向接口编程的优点？</p>
+<p>1 降低程序的耦合性。其能够最大限度的解耦，所谓解耦既是解耦合的意思，</p>
+<p>它和耦合相对。耦合就是联系 ，耦合越强，联系越紧密。在程序中紧密的联系并不是一件好的事情，</p>
+<p>因为两种事物之间联系越紧密，你更换 其中之一的难度就越大，扩展功能和debug的难度也就越大。</p>
+<p>2 易于程序的扩展；</p>
+<p>3 有利于程序的维护;</p>
 ]]></content>
     </entry>
 </feed>

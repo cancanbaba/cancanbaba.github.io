@@ -5,9 +5,9 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    cancanbaba个人网站
+    cancanbaba&#39;s blog
 </title>
-<link rel="shortcut icon" href="https://https://cancanbaba.github.io/favicon.ico?v=1605675045744">
+<link rel="shortcut icon" href="https://https://cancanbaba.github.io/favicon.ico?v=1605676123025">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,11 +27,11 @@
     <div class="nav">
         <div class="logo">
             <a href="https://https://cancanbaba.github.io">
-                <img class="avatar" src="https://https://cancanbaba.github.io/images/avatar.png?v=1605675045744" alt="">
+                <img class="avatar" src="https://https://cancanbaba.github.io/images/avatar.png?v=1605676123025" alt="">
             </a>
             <div class="site-title">
                 <h1>
-                    cancanbaba个人网站
+                    cancanbaba&#39;s blog
                 </h1>
             </div>
         </div>
@@ -99,8 +99,8 @@
         
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="https://https://cancanbaba.github.io/post/123/">
-                        123
+                    <a href="https://https://cancanbaba.github.io/post/javaseji-he/">
+                        JavaSE：集合
                     </a>
                 </h2>
                 <div class="post-info">
@@ -112,44 +112,165 @@
                             <div class="post-content">
                                 
                                         <div class="post-content-content">
-                                            的胜多负少的鬼地方个地方梵蒂冈电饭锅的方式
+                                            001.概述
+集合是Java的一种容器，它位于java.util包下，主要包括：Collection(接口)、Map(接口)、集合工具类。
+002.集合结构图
+003.List接口
+0031.特点
+有序的、允许有重复元素的集合
+0032.主要的两个实现类：
+ArrayList：底层基于数组，内存地址是连续的
+LinkedList：底层基于双向链表，内存地址不连续
+0033.ArrayList
+元素可以为一个或多个null；
+默认初始容量为10，当数组大小不足时，容量扩大1.5倍；
+List list = new ArrayList&amp;lt;&amp;gt;();
+list.add(&amp;quot;hua&amp;quot;);
+list.add(&amp;quot;ming&amp;quot;);
+list.add(&amp;quot;fan&amp;quot;);
+list.add(null);
+list.add(&amp;quot;hua&amp;quot;);
+list.add(null);
+System.out.println(list);
+//输出
+[hua, ming, fan, null, hua, null]
+复制代码0034.LinkedList
+元素可以为一个或多个null
+同时实现List和Deque接口
+0035.ArrayList和LinkedList常用的几种方法：
+void add(E element)             添加元素
+void add(int i,E element)       指定位置添加元素
+E get(int i)                    获取元素
+E set(int i,E element)          替换元素
+E remove(int i)                 移除元素
+int size()                      元素数量
+boolean isEmpty()               集合中没有元素，返回true
+复制代码0036.遍历的三种方式
+//举以下例子
+public static void main(String[] args) {
+List list = new ArrayList&amp;lt;&amp;gt;();
+for(int i=0;i&amp;lt;10;i++){
+list.add(i);
+}
+System.out.println(list);
+//迭代器遍历
+Iterator&amp;lt;Integer&amp;gt; it = list.iterator();
+while(it.hasNext()){
+	System.out.print(it.next() +&amp;quot; &amp;quot;);
+}
+
+System.out.println();
+//遍历：增强型for循环
+for(Integer n:list){
+	System.out.print(n+&amp;quot; &amp;quot;);
+}
+
+System.out.println();
+//遍历：for
+for(int i=0;i&amp;lt;list.size();i++){
+	System.out.print(list.get(i)+&amp;quot; &amp;quot;);
+}	
+
+}
+复制代码0037.应用场景
+ArrayList更适合查询操作；
+LinkedList更适合插入和删除操作；
+004.Set接口
+0041.特点
+无序的、不允许有重复元素的集合
+0042.实现类
+HashSet：底层基于HashMap实现
+TreeSet：底层基于二叉树实现
+0043.HashSet
+只允许一个null元素
+Set sh = new HashSet&amp;lt;&amp;gt;();
+sh.add(&amp;quot;fan&amp;quot;);
+sh.add(null);
+sh.add(&amp;quot;hua&amp;quot;);
+sh.add(&amp;quot;ming&amp;quot;);
+sh.add(&amp;quot;hua&amp;quot;);//被过滤掉
+sh.add(null); //被过滤掉
+System.out.println(sh);//[null, fan, hua, ming]
+复制代码005.Map接口
+0051.特点
+具有映射关系的集合
+数据以键值对(key-value)存储
+0052.主要的两个实现类
+HashMap：底层基于数组+链表(JDK7及之前)，数组+链表+红黑树(JDK8)
+HashTable：底层基于哈希表
+0053.HashMap
+键唯一，值可以不唯一
+允许有null键和null值
+Entry对象是无序排列的
+默认初始容量16，默认加载因子0.75
+0054.HashMap常用方法
+V put(Object key,Object value)  添加
+V get(Object key)               查询
+V remove(Object key)            移除
+int size()                           长度
+复制代码0055.代码
+Map&amp;lt;Integer,String&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
+map.put(1, &amp;quot;wang&amp;quot;);
+map.put(2, &amp;quot;li&amp;quot;);
+map.put(3, &amp;quot;hua&amp;quot;);
+map.put(4, null);
+map.put(5, null);
+map.put(2, &amp;quot;fan&amp;quot;); //直接覆盖前面相同的key的value
+map.put(null, null);//key value 可以为空
+System.out.println(map);//{null=null, 1=wang, 2=fan, 3=hua, 4=null, 5=null}
+复制代码0056.遍历的方式
+//方式一：遍历
+for(Integer i:map.keySet()){
+System.out.println(&amp;quot;key:&amp;quot;+i+&amp;quot; values:&amp;quot;+map.get(i));
+}
+//方式二：遍历
+Iterator&amp;lt;Entry&amp;lt;Integer,String&amp;gt;&amp;gt; list = map.entrySet().iterator();
+while(list.hasNext()){
+Entry&amp;lt;Integer,String&amp;gt;entry = list.next();
+System.out.println(&amp;quot;key:&amp;quot;+entry.getKey()+&amp;quot; values:&amp;quot;+entry.getValue());
+}
+复制代码006.工具类
+Collections、Arrays：集合的工具类帮助类，提供了对集合元素排序、搜索及线程安全等操作；
+Comparable、Comparator：一般用于对象比较来实现排序，两种略有区别；
+作者：火奂。著作权归作者所有。
 
                                         </div>
                                         
-                                            <a class="btn btn-text" href="https://https://cancanbaba.github.io/post/123/">Read More ~</a>
+                                            <a class="btn btn-text" href="https://https://cancanbaba.github.io/post/javaseji-he/">Read More ~</a>
                             </div>
                 </div>
             </article>
             
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="https://https://cancanbaba.github.io/post/hello-gridea/">
-                        Hello Gridea
+                    <a href="https://https://cancanbaba.github.io/post/mian-xiang-jie-kou-bian-cheng-you-dian/">
+                        面向接口编程优点
                     </a>
                 </h2>
                 <div class="post-info">
-                    <time class="post-time">2018-12-12</time>
+                    <time class="post-time">2020-11-18</time>
                     
-                        <a href="https://https://cancanbaba.github.io/tag/p1B_KyPVQ/" class="post-tag i-tag
-                            i-tag-primary">
-            #Gridea
-        </a>
-                        
                 </div>
                 <div class="post-article">
                     
-                        <a href="https://https://cancanbaba.github.io/post/hello-gridea/" class="post-feature-image" style="background-image:url(https://https://cancanbaba.github.io/post-images/hello-gridea.png) ">
-                        </a>
-                        
                             <div class="post-content">
                                 
-                                    <div class="post-content-abstract">
-                                        <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+                                        <div class="post-content-content">
+                                            1 首先什么是面向接口编程：
+面向接口编程就是先把客户的业务逻辑线提取出来，
+作为接口，业务具体实现通过该接口的实现类来完成。 当客户需求变化时，
+只需编写该业务逻辑的新的实现类，通过更改配置文件(例如Spring框架)中该接口 的实现类就可以完成需求，
+不需要改写现有代码，减少对系统的影响。
+2 面向接口编程的优点？
+1 降低程序的耦合性。其能够最大限度的解耦，所谓解耦既是解耦合的意思，
+它和耦合相对。耦合就是联系 ，耦合越强，联系越紧密。在程序中紧密的联系并不是一件好的事情，
+因为两种事物之间联系越紧密，你更换 其中之一的难度就越大，扩展功能和debug的难度也就越大。
+2 易于程序的扩展；
+3 有利于程序的维护;
 
-                                    </div>
-                                    
-                                            <a class="btn btn-text" href="https://https://cancanbaba.github.io/post/hello-gridea/">Read More ~</a>
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://https://cancanbaba.github.io/post/mian-xiang-jie-kou-bian-cheng-you-dian/">Read More ~</a>
                             </div>
                 </div>
             </article>
@@ -165,13 +286,13 @@
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://https://cancanbaba.github.io/images/avatar.png?v=1605675045744)">
+        <div class="id_card-avatar" style="background-image: url(https://https://cancanbaba.github.io/images/avatar.png?v=1605676123025)">
         </div>
         <h1 class="id_card-title">
-            cancanbaba个人网站
+            cancanbaba&#39;s blog
         </h1>
         <h2 class="id_card-description">
-            cancanbaba’s blog
+            Better late than never 
         </h2>
         <!--  -->
         <div class="id_card-sns">
