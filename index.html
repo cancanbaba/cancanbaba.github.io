@@ -1,194 +1,144 @@
-<html>
 
-<head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>
-    cancanbaba&#39;s blog
-</title>
-<link rel="shortcut icon" href="https://https://cancanbaba.github.io/favicon.ico?v=1605677600476">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>cancanbaba&#39;s blog</title>
+<meta name="description" content="Better late than never ">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://https://cancanbaba.github.io/favicon.ico?v=1605677687848">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://https://cancanbaba.github.io/styles/main.css">
-<!-- js -->
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://https://cancanbaba.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-</head>
 
-<body>
-    <div class="main">
-        <div class="header">
-    <div class="nav">
-        <div class="logo">
-            <a href="https://https://cancanbaba.github.io">
-                <img class="avatar" src="https://https://cancanbaba.github.io/images/avatar.png?v=1605677600476" alt="">
-            </a>
-            <div class="site-title">
-                <h1>
-                    cancanbaba&#39;s blog
-                </h1>
-            </div>
-        </div>
-        <span class="menu-btn fa fa-align-justify"></span>
-        <div class="menu-container">
-            <ul>
-                
-                    
-                            <li>
-                                <a href="https://https://cancanbaba.github.io/post/mian-xiang-jie-kou-bian-cheng-you-dian" class="menu">
-                                    首页
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/archives" class="menu">
-                                    归档
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/tags" class="menu">
-                                    标签
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="/post/about" class="menu">
-                                    关于
-                                </a>
-                            </li>
-                            
-                                
-            </ul>
-        </div>
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://https://cancanbaba.github.io">
+        <img class="avatar" src="https://https://cancanbaba.github.io/images/avatar.png?v=1605677687848" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://https://cancanbaba.github.io">
+        <h1 class="site-title">cancanbaba&#39;s blog</h1>
+      </a>
     </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $(".menu-btn").click(function() {
-            $(".menu-container").slideToggle();
-        });
-        $(window).resize(function() {
-
-            if (window.matchMedia('(min-width: 960px)').matches) {
-                $(".menu-container").css('display', 'block')
-            } else {
-                $(".menu-container").css('display', 'none')
-            }
-
-        });
-    });
-</script>
-
-            <div id="main-content" class="post-container main-container">
-                <div id="content" class="main-container-left">
-                    
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
         
-            <article class="post i-card">
-                <h2 class="post-title">
-                    <a href="https://https://cancanbaba.github.io/post/mian-xiang-jie-kou-bian-cheng-you-dian/">
-                        面向接口编程优点
-                    </a>
-                </h2>
-                <div class="post-info">
-                    <time class="post-time">2020-11-18</time>
-                    
-                </div>
-                <div class="post-article">
-                    
-                            <div class="post-content">
-                                
-                                        <div class="post-content-content">
-                                            1 首先什么是面向接口编程：
-面向接口编程就是先把客户的业务逻辑线提取出来，
-作为接口，业务具体实现通过该接口的实现类来完成。 当客户需求变化时，
-只需编写该业务逻辑的新的实现类，通过更改配置文件(例如Spring框架)中该接口 的实现类就可以完成需求，
-不需要改写现有代码，减少对系统的影响。
-2 面向接口编程的优点？
-1 降低程序的耦合性。其能够最大限度的解耦，所谓解耦既是解耦合的意思，
-它和耦合相对。耦合就是联系 ，耦合越强，联系越紧密。在程序中紧密的联系并不是一件好的事情，
-因为两种事物之间联系越紧密，你更换 其中之一的难度就越大，扩展功能和debug的难度也就越大。
-2 易于程序的扩展；
-3 有利于程序的维护;
+          <a href="https://https://cancanbaba.github.io/post/mian-xiang-jie-kou-bian-cheng-you-dian" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
 
-                                        </div>
-                                        
-                                            <a class="btn btn-text" href="https://https://cancanbaba.github.io/post/mian-xiang-jie-kou-bian-cheng-you-dian/">Read More ~</a>
-                            </div>
-                </div>
-            </article>
-            
-                <!-- 翻页 -->
-                
-                </div>
-                <!--  -->
-                <div class="main-container-middle"></div>
-                <!--  -->
-                <div id="sidebar" class="main-container-right">
 
-                    <!-- 个人信息 -->
-                    
-    <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://https://cancanbaba.github.io/images/avatar.png?v=1605677600476)">
-        </div>
-        <h1 class="id_card-title">
-            cancanbaba&#39;s blog
-        </h1>
-        <h2 class="id_card-description">
-            Better late than never 
-        </h2>
-        <!--  -->
-        <div class="id_card-sns">
-            <!-- github -->
-            
-                    <!-- twitter -->
-                    
-                            <!-- weibo -->
-                            
-                                    <!-- facebook -->
-                                    
-
-        </div>
+      <div class="content-container">
+        
+        
+<section class="post-item">
+    <div class="content">
+      <a href="https://https://cancanbaba.github.io/post/mian-xiang-jie-kou-bian-cheng-you-dian/">
+        <h2 class="post-title">面向接口编程优点</h2>
+      </a>
+      <div class="post-abstract">
+        
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2020-11-18</span>
+        
+      </div>
     </div>
     
-
-                        <!-- 公告栏 -->
-                        
-
-                </div>
-            </div>
+  </section>
 
 
-
-            <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
-  <a class="rss" href="https://https://cancanbaba.github.io/atom.xml" target="_blank">RSS</a>
+<div class="pagination-container">
+  
+  
 </div>
 
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
+
+      </div>
+
+      <div class="site-footer">
+  <div class="slogan">Better late than never </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://https://cancanbaba.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
 
     </div>
-    <script>
-        $('#sidebar').stickySidebar({
-            topSpacing: 80,
-            // bottomSpacing: 60
-        });
-    </script>
-</body>
+    <script type="application/javascript">
 
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
 </html>
